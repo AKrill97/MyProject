@@ -1,4 +1,16 @@
 package pages;
 
-public class DynamicPropertiesPage {
+import org.openqa.selenium.WebDriver;
+
+public class DynamicPropertiesPage extends ParentPage {
+    //WebElements
+
+    public DynamicPropertiesPage(WebDriver webDriver) {
+        super(webDriver);
+    }
+
+    @Override
+    protected String getRelativeUrl() {
+        return "/dynamic-properties";
+    }
 }
