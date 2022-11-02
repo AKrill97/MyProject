@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,6 +15,7 @@ public class CommonActionsOnElements {
     protected WebDriver webDriver;
     protected WebDriverWait webDriverWaitLow, webDriverWaitHigh;
     protected Logger logger = Logger.getLogger(getClass());
+    protected Actions actions = new Actions(webDriver);
 
     public CommonActionsOnElements(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -46,6 +48,17 @@ public class CommonActionsOnElements {
             webDriverWaitLow.withMessage("Button is not clickable").until(ExpectedConditions.elementToBeClickable(webElement));
             String webElementName = getElementName(webElement);
             webElement.click();
+            logger.info("Element '" + webElementName + "' was clicked");
+        } catch (Exception e) {
+            printErrorAndStopTest(e);
+        }
+    }
+
+    protected void contextClickOnElement(WebElement webElement) {
+        try {
+            webDriverWaitLow.withMessage("Button is not clickable").until(ExpectedConditions.elementToBeClickable(webElement));
+            String webElementName = getElementName(webElement);
+            actions.contextClick(webElement).perform();
             logger.info("Element '" + webElementName + "' was clicked");
         } catch (Exception e) {
             printErrorAndStopTest(e);
