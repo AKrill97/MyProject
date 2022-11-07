@@ -108,6 +108,21 @@ public class CommonActionsOnElements {
         }
     }
 
+    protected boolean isElementClickable(WebElement webElement) {
+        try {
+            boolean isElementClickable = webElement.isEnabled();
+            if (isElementClickable) {
+                logger.info("Element '" + getElementName(webElement) + "' is clickable");
+            } else {
+                logger.info("Element is not clickable");
+            }
+            return isElementClickable;
+        }catch (Exception e) {
+            printErrorAndStopTest(e);
+            return false;
+        }
+    }
+
     private String getElementName(WebElement webElement) {
         try {
             return webElement.getAccessibleName();

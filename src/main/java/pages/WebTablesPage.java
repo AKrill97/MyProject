@@ -2,7 +2,7 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class WebTablesPage extends ParentPage {
+public class WebTablesPage extends Menu {
     //WebElements
 
     public WebTablesPage(WebDriver webDriver) {

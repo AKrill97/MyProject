@@ -2,7 +2,7 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class LinksPage extends ParentPage {
+public class LinksPage extends Menu {
     //WebElements
 
     public LinksPage(WebDriver webDriver) {

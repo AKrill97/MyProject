@@ -10,6 +10,7 @@ public class AlertsTests extends BaseTest {
                 .isHomePageOpened()
                 .clickOnAlertsButton()
                 .openAlertsPage()
+                .checkIsRedirectToAlertsPage()
                 .clickAlertButton()
                 .checkSimpleAlert()
                 ;
@@ -21,6 +22,7 @@ public class AlertsTests extends BaseTest {
                 .isHomePageOpened()
                 .clickOnAlertsButton()
                 .openAlertsPage()
+                .checkIsRedirectToAlertsPage()
                 .clickTimerAlertButton()
                 .checkTimerAlert()
         ;
@@ -32,6 +34,7 @@ public class AlertsTests extends BaseTest {
                 .isHomePageOpened()
                 .clickOnAlertsButton()
                 .openAlertsPage()
+                .checkIsRedirectToAlertsPage()
                 .clickConfirmButton()
                 .checkConfirmAlert()
         ;
@@ -43,6 +46,7 @@ public class AlertsTests extends BaseTest {
                 .isHomePageOpened()
                 .clickOnAlertsButton()
                 .openAlertsPage()
+                .checkIsRedirectToAlertsPage()
                 .clickConfirmButton()
                 .checkDismissAlert()
         ;
@@ -54,6 +58,7 @@ public class AlertsTests extends BaseTest {
                 .isHomePageOpened()
                 .clickOnAlertsButton()
                 .openAlertsPage()
+                .checkIsRedirectToAlertsPage()
                 .clickPromtButton()
                 .checkPromtAlert("qwerty")
         ;

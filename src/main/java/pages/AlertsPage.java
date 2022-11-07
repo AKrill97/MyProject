@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class AlertsPage extends ParentPage {
+public class AlertsPage extends Menu {
     @FindBy(xpath = ".//button[@id='alertButton']")
     private WebElement alertButton;
     @FindBy(xpath = ".//button[@id='timerAlertButton']")
@@ -27,6 +27,12 @@ public class AlertsPage extends ParentPage {
     @Override
     protected String getRelativeUrl() {
         return "/alertsWindows";
+    }
+
+    public AlertsPage checkIsRedirectToAlertsPage() {
+        checkUrl();
+        Assert.assertTrue("Page does not loaded", alertButton.isDisplayed());
+        return this;
     }
 
     public AlertsPage clickAlertButton() {

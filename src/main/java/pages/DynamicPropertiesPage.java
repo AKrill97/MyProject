@@ -4,8 +4,9 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class DynamicPropertiesPage extends ParentPage {
+public class DynamicPropertiesPage extends Menu {
     @FindBy(xpath = ".//p[text()='This text has random Id']")
     private WebElement textWithRandomId;
     @FindBy(xpath = ".//button[@id='enableAfter']")
@@ -21,7 +22,7 @@ public class DynamicPropertiesPage extends ParentPage {
 
     @Override
     protected String getRelativeUrl() {
-        return "/dynamic-properties";
+        return "dynamic-properties";
     }
 
     public DynamicPropertiesPage checkIsRedirectToDynamicPropertiesPage() {
@@ -31,17 +32,18 @@ public class DynamicPropertiesPage extends ParentPage {
     }
 
     public DynamicPropertiesPage checkEnableAfterButton() {
-        //TODO
+        webDriverWaitLow.until(ExpectedConditions.elementToBeClickable(enableAfterButton));
+        Assert.assertTrue("Button is not Enabled", isElementClickable(enableAfterButton));
         return this;
     }
 
     public DynamicPropertiesPage checkColorChangeButton() {
-        //TODO
         return this;
     }
 
     public DynamicPropertiesPage checkVisibleAfterButton() {
-        //TODO
+        webDriverWaitLow.until(ExpectedConditions.visibilityOf(visibleAfterButton));
+        Assert.assertTrue("Button is not visible ", isElementDisplayed(visibleAfterButton));
         return this;
     }
 }
