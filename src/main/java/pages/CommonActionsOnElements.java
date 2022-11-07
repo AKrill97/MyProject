@@ -15,13 +15,14 @@ public class CommonActionsOnElements {
     protected WebDriver webDriver;
     protected WebDriverWait webDriverWaitLow, webDriverWaitHigh;
     protected Logger logger = Logger.getLogger(getClass());
-    protected Actions actions = new Actions(webDriver);
+    protected Actions actions;
 
     public CommonActionsOnElements(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
-        webDriverWaitLow = new WebDriverWait(webDriver, Duration.ofSeconds(3));
-        webDriverWaitHigh = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+        webDriverWaitLow = new WebDriverWait(webDriver, Duration.ofSeconds(6));
+        webDriverWaitHigh = new WebDriverWait(webDriver, Duration.ofSeconds(15));
+        actions = new Actions(webDriver);
     }
 
     protected void openPage(String url) {
@@ -31,6 +32,22 @@ public class CommonActionsOnElements {
         } catch (Exception e) {
             printErrorAndStopTest(e);
         }
+    }
+
+    protected void acceptAlert() {
+        webDriver.switchTo().alert().accept();
+    }
+
+    protected void dismissAlert() {
+        webDriver.switchTo().alert().dismiss();
+    }
+
+    protected String getTextFromAlert() {
+        return webDriver.switchTo().alert().getText();
+    }
+
+    protected void sendKeysToAlert(String keys) {
+        webDriver.switchTo().alert().sendKeys(keys);
     }
 
     protected void enterTextIntoElement(WebElement webElement, String textForInput) {
@@ -48,6 +65,17 @@ public class CommonActionsOnElements {
             webDriverWaitLow.withMessage("Button is not clickable").until(ExpectedConditions.elementToBeClickable(webElement));
             String webElementName = getElementName(webElement);
             webElement.click();
+            logger.info("Element '" + webElementName + "' was clicked");
+        } catch (Exception e) {
+            printErrorAndStopTest(e);
+        }
+    }
+
+    protected void doubleClickOnElement(WebElement webElement) {
+        try {
+            webDriverWaitLow.withMessage("Button is not clickable").until(ExpectedConditions.elementToBeClickable(webElement));
+            String webElementName = getElementName(webElement);
+            actions.doubleClick(webElement).perform();
             logger.info("Element '" + webElementName + "' was clicked");
         } catch (Exception e) {
             printErrorAndStopTest(e);

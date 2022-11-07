@@ -10,12 +10,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import pages.HomePage;
 
 import java.time.Duration;
 
 public class BaseTest {
     protected WebDriver webDriver;
     protected Logger logger = Logger.getLogger(getClass());
+    protected HomePage homePage;
 
     @Before
     public void setUp() {
@@ -24,6 +26,7 @@ public class BaseTest {
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         logger.info("Browser was opened");
+        homePage = new HomePage(webDriver);
     }
 
     @After

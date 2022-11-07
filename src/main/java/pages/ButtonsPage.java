@@ -4,19 +4,20 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class ButtonsPage extends ParentPage {
+public class ButtonsPage extends Menu {
     @FindBy(xpath = ".//button[@id='doubleClickBtn']")
     private WebElement doubleClickButton;
     @FindBy(xpath = ".//button[@id='rightClickBtn']")
     private WebElement rightClickButton;
-    @FindBy(xpath = ".//button[@id='aToxe']")
+    @FindBy(xpath = ".//button[text()='Click Me']")
     private WebElement clickMeButton;
-    @FindBy(xpath = ".//button[@id='doubleClickMessage']")
+    @FindBy(xpath = ".//p[@id='doubleClickMessage']")
     private WebElement doubleClickMessage;
-    @FindBy(xpath = ".//button[@id='rightClickMessage']")
+    @FindBy(xpath = ".//p[@id='rightClickMessage']")
     private WebElement rightClickMessage;
-    @FindBy(xpath = ".//button[@id='dynamicClickMessage']")
+    @FindBy(xpath = ".//p[@id='dynamicClickMessage']")
     private WebElement clickMeMessage;
 
     public ButtonsPage(WebDriver webDriver) {
@@ -25,7 +26,7 @@ public class ButtonsPage extends ParentPage {
 
     @Override
     protected String getRelativeUrl() {
-        return "/buttons";
+        return "buttons";
     }
 
     public ButtonsPage checkIsRedirectToButtonsPage() {
@@ -35,17 +36,19 @@ public class ButtonsPage extends ParentPage {
     }
 
     public ButtonsPage clickOnDoubleClickButton() {
-        clickOnElement(doubleClickButton);
-        clickOnElement(doubleClickButton);
+        webDriverWaitLow.until(ExpectedConditions.visibilityOf(banner));
+        doubleClickOnElement(doubleClickButton);
         return this;
     }
 
     public ButtonsPage clickOnRightClickButton() {
+        webDriverWaitLow.until(ExpectedConditions.visibilityOf(banner));
         contextClickOnElement(rightClickButton);
         return this;
     }
 
     public ButtonsPage clickOnClickMeButton() {
+        webDriverWaitLow.until(ExpectedConditions.visibilityOf(banner));
         clickOnElement(clickMeButton);
         return this;
     }

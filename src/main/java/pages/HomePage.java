@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends ParentPage {
-    //WebElements
     @FindBy(xpath = ".//*[@class='banner-image']")
     private WebElement mainBanner;
     @FindBy(xpath = ".//h5[text()='Elements']")
@@ -27,13 +26,18 @@ public class HomePage extends ParentPage {
         return this;
     }
 
-    public HomePage clickOnElementsButton() {
-        clickOnElement(elementsButton);
-        return this; //todo
+    public HomePage isHomePageOpened() {
+        isElementDisplayed(mainBanner);
+        return this;
     }
 
-    public HomePage clickOnAlertsButton () {
+    public Menu clickOnElementsButton() {
+        clickOnElement(elementsButton);
+        return new Menu(webDriver);
+    }
+
+    public Menu clickOnAlertsButton () {
         clickOnElement(alertsButton);
-        return this; //todo
+        return new Menu(webDriver);
     }
 }
