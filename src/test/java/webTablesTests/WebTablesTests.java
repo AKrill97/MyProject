@@ -6,7 +6,7 @@ import org.junit.Test;
 import pages.WebTablesPage;
 
 public class WebTablesTests extends BaseTest {
-    WebTablesPage webTablesPage = new WebTablesPage(webDriver);
+
     String firstName = "qwerty";
     String lastName = "123456";
     String email = "test@test.test";
@@ -23,11 +23,18 @@ public class WebTablesTests extends BaseTest {
                 .openWebTablesPage()
                 .checkIsRedirectToWebTablesPage()
                 .createNewRecordInTable(firstName,lastName, email, age, salary, department)
+                .checkRecordInTable(firstName)
         ;
     }
 
-    @After
+    @Test
     public void findAndDeleteRow() {
-        webTablesPage.deleteRowByFirstName(firstName);
+        homePage.openHomePage()
+                .isHomePageOpened()
+                .clickOnElementsButton()
+                .openWebTablesPage()
+                .checkIsRedirectToWebTablesPage()
+                .deleteRowByFirstName("Alden")
+        ;
     }
 }

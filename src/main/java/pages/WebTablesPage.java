@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
+
 public class WebTablesPage extends Menu {
     @FindBy(xpath = ".//div[@class='web-tables-wrapper']")
     private WebElement webTable;
@@ -29,6 +31,7 @@ public class WebTablesPage extends Menu {
     private WebElement submitButton;
 
     private String deleteButtonInRow = ".//div[text()='%s']//..//span[@title='Delete']";
+    private String findRecordByFirstName = ".//div[text()='%s']";
 
     public WebTablesPage(WebDriver webDriver) {
         super(webDriver);
@@ -60,7 +63,7 @@ public class WebTablesPage extends Menu {
     }
 
     public void submitNewRecord() {
-        clickOnElement(addNewRecordButton);
+        clickOnElement(submitButton);
     }
 
     public WebTablesPage createNewRecordInTable(String firstName, String lastName, String email, String age, String salary, String department) {
@@ -71,20 +74,13 @@ public class WebTablesPage extends Menu {
     }
 
     public WebTablesPage checkRecordInTable(String firstName) {
-        Assert.assertTrue("Message ", findRecordByFirstName(firstName).isDisplayed());
+        Assert.assertTrue("Message ", isElementDisplayed(String.format(findRecordByFirstName, firstName)));
         return this;
-    }
-
-    public WebElement findRecordByFirstName(String firstName) {
-        return webDriver.findElement(By.xpath(".//div[text()='" + firstName + "']"));
     }
 
     public WebTablesPage deleteRowByFirstName(String firstName) {
         clickOnElement(String.format(deleteButtonInRow, firstName));
-
+        Assert.assertFalse("Message ", isElementExist(String.format(findRecordByFirstName, firstName)));
         return this;
     }
-
-
-
 }

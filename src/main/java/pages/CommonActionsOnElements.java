@@ -3,6 +3,7 @@ package pages;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -118,6 +119,21 @@ public class CommonActionsOnElements {
         }
     }
 
+    protected boolean isElementDisplayed(String xpathLocator) {
+        try {
+            boolean isElementDisplayedStatus = webDriver.findElement(By.xpath(xpathLocator)).isDisplayed();
+            if (isElementDisplayedStatus) {
+                logger.info("Element is displayed");
+            } else {
+                logger.info("Element is not displayed");
+            }
+            return isElementDisplayedStatus;
+        } catch (Exception e) {
+            logger.error("Element is not displayed: " + e);
+            return false;
+        }
+    }
+
     protected boolean isElementClickable(WebElement webElement) {
         try {
             boolean isElementClickable = webElement.isEnabled();
@@ -129,6 +145,15 @@ public class CommonActionsOnElements {
             return isElementClickable;
         }catch (Exception e) {
             printErrorAndStopTest(e);
+            return false;
+        }
+    }
+
+    protected boolean isElementExist(String xpathLocator) {
+        try {
+            webDriver.findElement(By.xpath(xpathLocator));
+            return true;
+        } catch (NoSuchElementException e) {
             return false;
         }
     }
