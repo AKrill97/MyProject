@@ -12,7 +12,6 @@ public class DynamicPropertiesTests extends BaseTest {
                 .openDynamicPropertiesPage()
                 .checkIsRedirectToDynamicPropertiesPage()
                 .checkEnableAfterButton()
-                //.checkColorChangeButton()
                 .checkVisibleAfterButton()
         ;
     }

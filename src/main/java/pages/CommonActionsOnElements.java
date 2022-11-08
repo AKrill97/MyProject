@@ -158,6 +158,11 @@ public class CommonActionsOnElements {
         }
     }
 
+    protected void moveToElement (WebElement element) {
+        actions.moveToElement(element);
+        actions.perform();
+    }
+
     private String getElementName(WebElement webElement) {
         try {
             return webElement.getAccessibleName();

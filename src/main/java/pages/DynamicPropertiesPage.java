@@ -37,10 +37,6 @@ public class DynamicPropertiesPage extends Menu {
         return this;
     }
 
-    public DynamicPropertiesPage checkColorChangeButton() {
-        return this;
-    }
-
     public DynamicPropertiesPage checkVisibleAfterButton() {
         webDriverWaitLow.until(ExpectedConditions.visibilityOf(visibleAfterButton));
         Assert.assertTrue("Button is not visible ", isElementDisplayed(visibleAfterButton));
