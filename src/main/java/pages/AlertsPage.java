@@ -65,40 +65,40 @@ public class AlertsPage extends Menu {
 
     public AlertsPage checkSimpleAlert() {
         webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
-        Assert.assertEquals("Message ", "You clicked a button", getTextFromAlert());
+        Assert.assertEquals("Unexpected text ", "You clicked a button", getTextFromAlert());
         acceptAlert();
         return this;
     }
 
     public AlertsPage checkTimerAlert() {
         webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
-        Assert.assertEquals("Message ", "This alert appeared after 5 seconds", getTextFromAlert());
+        Assert.assertEquals("Unexpected text ", "This alert appeared after 5 seconds", getTextFromAlert());
         acceptAlert();
         return this;
     }
 
     public AlertsPage checkConfirmAlert() {
         webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
-        Assert.assertEquals("Message ", "Do you confirm action?", getTextFromAlert());
+        Assert.assertEquals("Unexpected text ", "Do you confirm action?", getTextFromAlert());
         acceptAlert();
-        Assert.assertEquals("Message", "You selected Ok", confirmResult.getText());
+        Assert.assertEquals("Unexpected text ", "You selected Ok", confirmResult.getText());
         return this;
     }
 
     public AlertsPage checkDismissAlert() {
         webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
-        Assert.assertEquals("Message ", "Do you confirm action?", getTextFromAlert());
+        Assert.assertEquals("Unexpected text ", "Do you confirm action?", getTextFromAlert());
         dismissAlert();
-        Assert.assertEquals("Message", "You selected Cancel", confirmResult.getText());
+        Assert.assertEquals("Unexpected text ", "You selected Cancel", confirmResult.getText());
         return this;
     }
 
     public AlertsPage checkPromtAlert(String keys) {
         webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
-        Assert.assertEquals("Message ", "Please enter your name", getTextFromAlert());
+        Assert.assertEquals("Unexpected text ", "Please enter your name", getTextFromAlert());
         sendKeysToAlert(keys);
         acceptAlert();
-        Assert.assertEquals("Message ", "You entered " + keys, promptResult.getText());
+        Assert.assertEquals("Unexpected text ", "You entered " + keys, promptResult.getText());
         return this;
     }
 }

@@ -17,8 +17,6 @@ public class Menu extends ParentPage {
     private WebElement linksTab;
     @FindBy(xpath = ".//span[text()='Alerts']")
     private WebElement alertsTab;
-    @FindBy(xpath = ".//div[@id='Ad.Plus-728x90']")
-    protected WebElement banner;
 
     public Menu(WebDriver webDriver) {
         super(webDriver);

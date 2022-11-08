@@ -13,7 +13,7 @@ public class AlertsTests extends BaseTest {
                 .checkIsRedirectToAlertsPage()
                 .clickAlertButton()
                 .checkSimpleAlert()
-                ;
+        ;
     }
 
     @Test
