@@ -26,7 +26,7 @@ public class AlertsPage extends Menu {
 
     @Override
     protected String getRelativeUrl() {
-        return "/alertsWindows";
+        return "alerts";
     }
 
     public AlertsPage checkIsRedirectToAlertsPage() {
