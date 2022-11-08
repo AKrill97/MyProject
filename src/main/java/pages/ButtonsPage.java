@@ -36,19 +36,16 @@ public class ButtonsPage extends Menu {
     }
 
     public ButtonsPage clickOnDoubleClickButton() {
-        webDriverWaitLow.until(ExpectedConditions.visibilityOf(banner));
         doubleClickOnElement(doubleClickButton);
         return this;
     }
 
     public ButtonsPage clickOnRightClickButton() {
-        webDriverWaitLow.until(ExpectedConditions.visibilityOf(banner));
         contextClickOnElement(rightClickButton);
         return this;
     }
 
     public ButtonsPage clickOnClickMeButton() {
-        webDriverWaitLow.until(ExpectedConditions.visibilityOf(banner));
         clickOnElement(clickMeButton);
         return this;
     }

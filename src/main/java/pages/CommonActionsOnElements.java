@@ -2,6 +2,7 @@ package pages;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -66,6 +67,15 @@ public class CommonActionsOnElements {
             String webElementName = getElementName(webElement);
             webElement.click();
             logger.info("Element '" + webElementName + "' was clicked");
+        } catch (Exception e) {
+            printErrorAndStopTest(e);
+        }
+    }
+
+    protected void clickOnElement(String xpathLocator) {
+        try {
+            WebElement element = webDriver.findElement(By.xpath(xpathLocator));
+            clickOnElement(element);
         } catch (Exception e) {
             printErrorAndStopTest(e);
         }
