@@ -1,14 +1,13 @@
-Feature: Privat24 curses
+Feature: Privat24 rates
 
   @R001
- Scenario Outline: R001 Compare curses from UI and API
-    Given Open Privat24 site
-    When Open all curses page
-    And Read '<Ticker>' on page
-    And Get the '<Ticker>' curse by API
-    Then Compare both curses
-
+ Scenario Outline: R001 Compare rates from UI and API
+    Given User opens Privat24 'Main' page
+    When Get current exchange rate via Privat24 API for '<Ticker>' currency
+    And User opens 'Exchange' page
+    And Get the '<Ticker>' exchange rate on page
+    Then Compare exchange rates from UI and API
 
     Examples:
     | Ticker |
-    | usd    |
+    | USD    |
