@@ -32,6 +32,7 @@ public class Privat24HomePage extends Privat24ParentPage {
     }
 
     public Privat24ExchangeRatePage clickOnExchangeRatesButton() {
+        isElementClickable(exchangeRatesButton);
         clickOnElement(exchangeRatesButton);
         return new Privat24ExchangeRatePage(webDriver);
     }

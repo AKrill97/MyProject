@@ -26,7 +26,7 @@ public class ApiHelper {
         PrivatApiDTO[] listOfRates = getExchangeRatesFromAPI();
         float rate = 0;
         for (PrivatApiDTO s : listOfRates) {
-            if (s.getBuy().equalsIgnoreCase(currency)) {
+            if (s.getCcy().equalsIgnoreCase(currency)) {
                 rate = Float.parseFloat(s.getBuy());
                 break;
             }
