@@ -15,8 +15,8 @@ public class Privat24_HomePage_StepDefinition {
         ;
     }
 
-    @When("^User opens 'Exchange' page$")
-    public void user_opens_Exchange_page() {
+    @When("^User clicks on 'Exchange' page$")
+    public void user_clicks_on_Exchange_page() {
         homePage.clickOnExchangeRatesButton();
     }
 }
