@@ -35,52 +35,49 @@ public class AlertsPage extends Menu {
         return this;
     }
 
-    public AlertsPage clickAlertButton() {
+    public AlertsPage clickAlertButtonAndSwitchToOpenedPopUp() {
         clickOnElement(alertButton);
-        webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
-        webDriver.switchTo().alert();
+        switchToOpenedAlert();
         return this;
     }
 
-    public AlertsPage clickTimerAlertButton() {
+    public AlertsPage clickTimerAlertButtonAndSwitchToOpenedPopUp() {
         clickOnElement(timerAlertButton);
-        webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
-        webDriver.switchTo().alert();
+        switchToOpenedAlert();
         return this;
     }
 
-    public AlertsPage clickConfirmButton() {
+    public AlertsPage clickConfirmButtonAndSwitchToOpenedPopUp() {
         clickOnElement(confirmButton);
-        webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
-        webDriver.switchTo().alert();
+        switchToOpenedAlert();
         return this;
     }
 
-    public AlertsPage clickPromtButton() {
+    public AlertsPage clickPromtButtonAndSwitchToOpenedPopUp() {
         clickOnElement(promptButton);
-        webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
-        webDriver.switchTo().alert();
+        switchToOpenedAlert();
         return this;
     }
 
     public AlertsPage checkSimpleAlert() {
         webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
         Assert.assertEquals("Unexpected text ", "You clicked a button", getTextFromAlert());
-        acceptAlert();
         return this;
     }
 
     public AlertsPage checkTimerAlert() {
         webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
         Assert.assertEquals("Unexpected text ", "This alert appeared after 5 seconds", getTextFromAlert());
-        acceptAlert();
         return this;
     }
 
     public AlertsPage checkConfirmAlert() {
         webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
         Assert.assertEquals("Unexpected text ", "Do you confirm action?", getTextFromAlert());
-        acceptAlert();
+        return this;
+    }
+
+    public AlertsPage checkConfirmTextFromConfirmAlert() {
         Assert.assertEquals("Unexpected text ", "You selected Ok", confirmResult.getText());
         return this;
     }
@@ -88,7 +85,10 @@ public class AlertsPage extends Menu {
     public AlertsPage checkDismissAlert() {
         webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
         Assert.assertEquals("Unexpected text ", "Do you confirm action?", getTextFromAlert());
-        dismissAlert();
+        return this;
+    }
+
+    public AlertsPage checkDismissTextFromConfirmAlert() {
         Assert.assertEquals("Unexpected text ", "You selected Cancel", confirmResult.getText());
         return this;
     }
@@ -97,8 +97,22 @@ public class AlertsPage extends Menu {
         webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
         Assert.assertEquals("Unexpected text ", "Please enter your name", getTextFromAlert());
         sendKeysToAlert(keys);
-        acceptAlert();
+        return this;
+    }
+
+    public AlertsPage checkTextFromPromtAlert(String keys) {
         Assert.assertEquals("Unexpected text ", "You entered " + keys, promptResult.getText());
         return this;
     }
+
+    public AlertsPage acceptAlert() {
+        acceptAlertPopUp();
+        return this;
+    }
+
+    public AlertsPage dismissAlert() {
+        dismissAlertPopUp();
+        return this;
+    }
+
 }

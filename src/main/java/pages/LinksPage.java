@@ -42,14 +42,14 @@ public class LinksPage extends Menu {
     public HomePage checkSimpleLink() {
         clickOnElement(simpleLink);
         userOpensNewTab();
-        Assert.assertEquals("Message", "https://demoqa.com/", webDriver.getCurrentUrl());
+        Assert.assertEquals("Message", baseUrl, webDriver.getCurrentUrl());
         return new HomePage(webDriver);
     }
 
     public HomePage checkDynamicLink() {
         clickOnElement(dynamicLink);
         userOpensNewTab();
-        Assert.assertEquals("Message", "https://demoqa.com/", webDriver.getCurrentUrl());
+        Assert.assertEquals("Message", baseUrl, webDriver.getCurrentUrl());
         return new HomePage(webDriver);
     }
 

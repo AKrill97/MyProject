@@ -36,19 +36,23 @@ public class CommonActionsOnElements {
         }
     }
 
-    protected void acceptAlert() {
+    protected void acceptAlertPopUp() {
+        webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
         webDriver.switchTo().alert().accept();
     }
 
-    protected void dismissAlert() {
+    protected void dismissAlertPopUp() {
+        webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
         webDriver.switchTo().alert().dismiss();
     }
 
     protected String getTextFromAlert() {
+        webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
         return webDriver.switchTo().alert().getText();
     }
 
     protected void sendKeysToAlert(String keys) {
+        webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
         webDriver.switchTo().alert().sendKeys(keys);
     }
 
@@ -136,16 +140,20 @@ public class CommonActionsOnElements {
 
     protected boolean isElementClickable(WebElement webElement) {
         try {
-            boolean isElementClickable = webElement.isEnabled();
-            if (isElementClickable) {
-                logger.info("Element '" + getElementName(webElement) + "' is clickable");
-            } else {
-                logger.info("Element is not clickable");
-            }
-            return isElementClickable;
-        }catch (Exception e) {
+            webDriverWaitLow.until(ExpectedConditions.elementToBeClickable(webElement));
+            return true;
+        } catch (Exception e) {
             printErrorAndStopTest(e);
             return false;
+        }
+    }
+
+    protected void switchToOpenedAlert() {
+        try {
+            webDriverWaitLow.until(ExpectedConditions.alertIsPresent());
+            webDriver.switchTo().alert();
+        } catch (Exception e) {
+            printErrorAndStopTest(e);
         }
     }
 

@@ -4,6 +4,8 @@ import baseTest.BaseTest;
 import org.junit.Test;
 
 public class AlertsTests extends BaseTest {
+    private String keys = "qwerty";
+
     @Test
     public void checkSimpleAlert() {
         homePage.openHomePage()
@@ -11,8 +13,9 @@ public class AlertsTests extends BaseTest {
                 .clickOnAlertsButton()
                 .openAlertsPage()
                 .checkIsRedirectToAlertsPage()
-                .clickAlertButton()
+                .clickAlertButtonAndSwitchToOpenedPopUp()
                 .checkSimpleAlert()
+                .acceptAlert()
         ;
     }
 
@@ -23,8 +26,9 @@ public class AlertsTests extends BaseTest {
                 .clickOnAlertsButton()
                 .openAlertsPage()
                 .checkIsRedirectToAlertsPage()
-                .clickTimerAlertButton()
+                .clickTimerAlertButtonAndSwitchToOpenedPopUp()
                 .checkTimerAlert()
+                .acceptAlert()
         ;
     }
 
@@ -35,8 +39,10 @@ public class AlertsTests extends BaseTest {
                 .clickOnAlertsButton()
                 .openAlertsPage()
                 .checkIsRedirectToAlertsPage()
-                .clickConfirmButton()
+                .clickConfirmButtonAndSwitchToOpenedPopUp()
                 .checkConfirmAlert()
+                .acceptAlert()
+                .checkConfirmTextFromConfirmAlert()
         ;
     }
 
@@ -47,8 +53,10 @@ public class AlertsTests extends BaseTest {
                 .clickOnAlertsButton()
                 .openAlertsPage()
                 .checkIsRedirectToAlertsPage()
-                .clickConfirmButton()
+                .clickConfirmButtonAndSwitchToOpenedPopUp()
                 .checkDismissAlert()
+                .dismissAlert()
+                .checkDismissTextFromConfirmAlert()
         ;
     }
 
@@ -59,8 +67,10 @@ public class AlertsTests extends BaseTest {
                 .clickOnAlertsButton()
                 .openAlertsPage()
                 .checkIsRedirectToAlertsPage()
-                .clickPromtButton()
-                .checkPromtAlert("qwerty")
+                .clickPromtButtonAndSwitchToOpenedPopUp()
+                .checkPromtAlert(keys)
+                .acceptAlert()
+                .checkTextFromPromtAlert(keys)
         ;
     }
 }
