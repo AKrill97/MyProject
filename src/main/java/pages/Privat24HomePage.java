@@ -27,6 +27,7 @@ public class Privat24HomePage extends Privat24ParentPage {
     }
 
     public Privat24HomePage isHomePageOpened() {
+        checkUrl();
         Assert.assertTrue("Page does not opened ", isElementDisplayed(transferMoneyButton));
         return this;
     }

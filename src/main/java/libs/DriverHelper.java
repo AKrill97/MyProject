@@ -26,7 +26,7 @@ public class DriverHelper {
         webDriver.quit();
     }
 
-    private WebDriver initDriver() {
+    private  WebDriver initDriver() {
         String browser = System.getProperty("browser");
         if ((browser == null) || "chrome".equalsIgnoreCase(browser)) {
             WebDriverManager.chromedriver().setup();

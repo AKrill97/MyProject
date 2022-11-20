@@ -11,8 +11,7 @@ public class Privat24_HomePage_StepDefinition {
     @Given("^User opens Privat24 'Main' page$")
     public void user_opens_Privat24_Main_page() {
         homePage.openHomePage()
-                .isHomePageOpened()
-        ;
+                .isHomePageOpened();
     }
 
     @When("^User clicks on 'Exchange' page$")
